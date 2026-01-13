@@ -52,7 +52,7 @@ function PhaseDetails({
           {phase.points.map((point) => (
             <li key={point} className="flex items-start gap-4 text-slate-700">
               <span className="text-[#8fb339] text-lg">✓</span>
-              <span className="text-sm">{point}</span>
+              <span className="text-base">{point}</span>
             </li>
           ))}
         </ul>

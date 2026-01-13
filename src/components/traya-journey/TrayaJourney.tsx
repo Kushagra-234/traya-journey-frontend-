@@ -14,46 +14,13 @@ type Phase = {
   key: string;
   label: string;
   title: string;
+  months: number[];
   points: string[];
 };
 
 function getPhaseForMonth(month: Month): Phase {
-  if (month === 1) {
-    return {
-      key: "phase-1",
-      label: "Phase 1 · Internal Balance",
-      title: "Internal balance and system reset",
-      points: [
-        "Digestion and sleep quality start to improve",
-        "Energy levels feel more stable through the day",
-        "You may not see visible hair changes yet — this is expected",
-      ],
-    };
-  }
-
-  if (month === 2 || month === 3) {
-    return {
-      key: "phase-2",
-      label: "Phase 2 · Scalp Health",
-      title: "Scalp health and follicle activation",
-      points: [
-        "Dandruff and itchiness begin to settle down",
-        "Hair fall stabilises as follicles are activated",
-        "Scalp feels cleaner and less greasy between washes",
-      ],
-    };
-  }
-
-  return {
-    key: "phase-3",
-    label: "Phase 3 · Regrowth",
-    title: "Visible baby hair and density",
-    points: [
-      "Soft baby hair becomes visible along the hairline",
-      "Density gradually improves in thinner areas",
-      "Consistency now matters more than ever for long-term gains",
-    ],
-  };
+  const phase = journeyData.phases.find((p: Phase) => p.months.includes(month));
+  return phase || journeyData.phases[0];
 }
 
 function TrayaJourney() {
