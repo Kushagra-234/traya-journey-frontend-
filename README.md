@@ -85,13 +85,8 @@ This project covers the requirements from the assignment brief:
 
 Add your screenshots here (replace file names/paths as needed):
 
-```md
 ![Traya Journey - Web View](./src/assets/screenshots/webview.png)
 ![Traya Journey - Mobile View](./src/assets/screenshots/mobileview.png)
-```
-
-
-
 
 ## Responsiveness (Mobile-first)
 
@@ -133,22 +128,3 @@ npm run preview
 ```bash
 npm run lint
 ```
-
-
-## Folder Structure (High Level)
-
-- **`src/components/traya-journey/`**
-  - `TrayaJourney.tsx` (main screen)
-  - `Timeline.tsx` (month tabs + progress bar)
-  - `PhaseDetails.tsx` (phase copy + month image)
-  - `BeforeAfter.tsx` (before/after toggle)
-  - `TrustWidget.tsx` (trust content)
-- **`src/data/journeyData.json`**
-  - Month → image mapping
-- **`src/assets/images/`**
-  - Month mock images
-
-## Notes
-
-- Styling is built with Tailwind (`@tailwindcss/vite`).
-- Images are resolved via Vite `import.meta.glob` so they must exist under `src/assets/images/`.
