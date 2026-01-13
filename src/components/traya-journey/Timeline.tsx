@@ -1,11 +1,16 @@
-import React from "react";
+type TimelineProps = {
+  selectedMonth: number;
+  onMonthChange: (month: number) => void;
+  months: number[];
+  progressPercentage: number;
+};
 
 function Timeline({
   selectedMonth,
   onMonthChange,
   months,
   progressPercentage,
-}) {
+}: TimelineProps) {
   return (
     <div className="w-full py-4">
       {/* Month buttons - Traya style connected tabs */}

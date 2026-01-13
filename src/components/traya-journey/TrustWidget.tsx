@@ -1,9 +1,16 @@
-import React from "react";
+type Review = {
+  id: string;
+  name: string;
+  rating: number;
+  title: string;
+  body: string;
+  verified: boolean;
+};
 
-const REVIEWS = [
+const REVIEWS: Review[] = [
   {
     id: "r1",
-    name: "Aman",
+    name: "User 1",
     rating: 5,
     title: "Hair fall reduced in 6 weeks",
     body: "Started seeing less hair on my pillow and shower drain. The routine is easy to follow — consistency helps.",
@@ -11,7 +18,7 @@ const REVIEWS = [
   },
   {
     id: "r2",
-    name: "Ritika",
+    name: "User 2",
     rating: 5,
     title: "Scalp feels cleaner",
     body: "Dandruff and itchiness went down. The plan feels structured month by month. Happy with progress so far.",
@@ -19,26 +26,41 @@ const REVIEWS = [
   },
   {
     id: "r3",
-    name: "Kunal",
+    name: "User 3",
     rating: 4,
     title: "Not instant, but visible change",
     body: "Didn’t see much in month 1, but hair fall stabilised by month 2. Baby hair is visible now.",
     verified: true,
   },
+  {
+    id: "r4",
+    name: "User 4",
+    rating: 4.5,
+    title: "Good improvement, needs patience",
+    body: "Month 1 was slow, but by month 3 hair fall felt controlled. I like that the plan is structured and easy to follow.",
+    verified: true,
+  },
 ];
 
-function Stars({ rating }) {
-  const full = Math.max(0, Math.min(5, rating));
+function Stars({ rating }: { rating: number }) {
+  const safe = Math.max(0, Math.min(5, Number(rating) || 0));
 
   return (
     <div
       className="flex gap-0.5 text-amber-400 text-sm"
-      aria-label={`${full} out of 5 stars`}
+      aria-label={`${safe} out of 5 stars`}
     >
       {Array.from({ length: 5 }).map((_, idx) => (
         <span
           key={idx}
-          className={idx < full ? "text-amber-400" : "text-slate-300"}
+          className="bg-clip-text text-transparent"
+          style={{
+            backgroundImage: (() => {
+              const fill = Math.max(0, Math.min(1, safe - idx));
+              const pct = Math.round(fill * 100);
+              return `linear-gradient(90deg, #fbbf24 ${pct}%, #cbd5e1 ${pct}%)`;
+            })(),
+          }}
         >
           ★
         </span>
@@ -61,14 +83,14 @@ function TrustWidget() {
           <span className="text-lg font-bold text-slate-900">
             {averageRating.toFixed(1)}/ 5.0
           </span>
-          <Stars rating={5} />
+          <Stars rating={averageRating} />
         </div>
         <p className="text-xs sm:text-sm text-slate-500 mt-1">
           Based on {totalReviews.toLocaleString()}+ verified customer reviews
         </p>
       </div>
 
-      <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory">
+      <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory no-scrollbar">
         {REVIEWS.map((review) => (
           <article
             key={review.id}

@@ -1,6 +1,5 @@
-import React from "react";
-import Navbar from "./components/traya-journey/Navbar.jsx";
-import TrayaJourney from "./components/traya-journey/TrayaJourney.jsx";
+import Navbar from "./components/common/Navbar";
+import TrayaJourney from "./components/traya-journey/TrayaJourney";
 
 function App() {
   return (

@@ -1,12 +1,23 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Timeline from "./Timeline";
 import PhaseDetails from "./PhaseDetails";
 import BeforeAfter from "./BeforeAfter";
 import TrustWidget from "./TrustWidget";
+import Footer from "../common/Footer";
+import journeyData from "../../data/journeyData.json";
 
-const MONTHS = [1, 2, 3, 4, 5];
+type Month = 1 | 2 | 3 | 4 | 5;
 
-function getPhaseForMonth(month) {
+const MONTHS: Month[] = [1, 2, 3, 4, 5];
+
+type Phase = {
+  key: string;
+  label: string;
+  title: string;
+  points: string[];
+};
+
+function getPhaseForMonth(month: Month): Phase {
   if (month === 1) {
     return {
       key: "phase-1",
@@ -46,7 +57,7 @@ function getPhaseForMonth(month) {
 }
 
 function TrayaJourney() {
-  const [selectedMonth, setSelectedMonth] = useState(1);
+  const [selectedMonth, setSelectedMonth] = useState<Month>(1);
 
   const phase = useMemo(() => getPhaseForMonth(selectedMonth), [selectedMonth]);
 
@@ -68,7 +79,7 @@ function TrayaJourney() {
       <section className="w-full bg-[#f5f5f5] py-6 px-6">
         <Timeline
           selectedMonth={selectedMonth}
-          onMonthChange={setSelectedMonth}
+          onMonthChange={(month) => setSelectedMonth(month as Month)}
           months={MONTHS}
           progressPercentage={progressPercentage}
         />
@@ -76,18 +87,24 @@ function TrayaJourney() {
 
       {/* Phase Details section */}
       <section className="w-full bg-[#eaeaea] py-6 px-6">
-        <PhaseDetails phase={phase} />
+        <PhaseDetails
+          phase={phase}
+          selectedMonth={selectedMonth}
+          monthImages={journeyData.monthImages}
+        />
       </section>
 
       {/* Before / After section */}
       <section className="w-full bg-[#f5f5f5] py-6 px-6">
-        <BeforeAfter selectedMonth={selectedMonth} />
+        <BeforeAfter monthImages={journeyData.monthImages} />
       </section>
 
       {/* Trust Widget section */}
       <section className="w-full bg-white py-6 px-6">
         <TrustWidget />
       </section>
+
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,24 @@
+{
+  "monthImages": [
+    {
+      "month": 1,
+      "imageFile": "month1.png"
+    },
+    {
+      "month": 2,
+      "imageFile": "month2.png"
+    },
+    {
+      "month": 3,
+      "imageFile": "month3.png"
+    },
+    {
+      "month": 4,
+      "imageFile": "month4.png"
+    },
+    {
+      "month": 5,
+      "imageFile": "month5.png"
+    }
+  ]
+}

@@ -1,5 +1,3 @@
-import React from "react";
-
 function Navbar() {
   return (
     <header className="w-full bg-[#3d424f] px-6 py-4">
