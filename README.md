@@ -1,16 +1,154 @@
-# React + Vite
+# Traya Journey (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React UI that visualizes a **5‑month hair regrowth journey** with:
 
-Currently, two official plugins are available:
+- **Month selector** (Month 1 → Month 5)
+- **Progress bar** showing completion percentage
+- **Phase details** (Internal Balance → Scalp Health → Regrowth)
+- **Before/After** view (Month 1 vs Month 5)
+- **Mock month images** to represent hair/scalp pattern changes over time
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- **React** (UI)
+- **TypeScript** (type-safety)
+- **Vite** (dev server + bundler)
+- **Tailwind CSS** (styling)
+- **ESLint** (linting)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Key Features
 
-## Expanding the ESLint configuration
+- **Progress Timeline**
+  - Month tabs for navigation
+  - Progress bar updates as you change month
+- **Phase Details (dynamic)**
+  - Phase content is computed based on the selected month
+  - Month-wise image support using `import.meta.glob` (Vite)
+- **Before / After Preview**
+  - Toggle between Month 1 (Before) and Month 5 (After)
+- **Mock Images for Hair Patterns**
+  - Drop placeholder/mock images in `src/assets/images` and map them in `src/data/journeyData.json`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## SDE-1 Frontend Assignment Brief Coverage
+
+This project covers the requirements from the assignment brief:
+
+### Objective
+
+- **Responsive + interactive Traya Journey component**
+  - Implemented as a single interactive journey screen with month navigation, phase content, and trust elements.
+
+### Problem Statement
+
+- **Clear 5-month expectation setting**
+  - Month navigation + progress percentage UI
+  - Phase copy updates based on selected month (3-phase logic)
+
+### Feature Requirements
+
+- **Interactive Timeline (Month 1 → Month 5)**
+  - Month selector + progress bar
+- **Phase Logic (3 phases)**
+  - Phase 1: Month 1 (Internal Balance)
+  - Phase 2: Months 2–3 (Scalp Health)
+  - Phase 3: Months 4–5 (Regrowth)
+  - Implemented via month → phase mapping
+- **Before/After Comparison**
+  - Uses Month 1 as **Before** and Month 5 as **After**
+- **Trust Widget (mock verified reviews + star ratings)**
+  - Includes mock verified review cards + star ratings
+
+### Technical Constraints
+
+- **React (Functional components + Hooks)**
+  - Uses `useState` / `useMemo` across journey components
+- **Styling (Tailwind, mobile-first)**
+  - Tailwind classes across components, with responsive utilities (`sm:`, `md:`)
+- **Data (local JSON ingest)**
+  - Month image mapping comes from a local JSON file
+- **Performance (avoid layout shift / CLS)**
+  - Image containers use fixed heights (e.g. `h-32`, `h-40`, `h-52`, `h-60`) to keep layout stable while switching months
+
+### Evaluation Criteria Mapping
+
+- **Code Quality**
+  - Modular components (`Timeline`, `PhaseDetails`, `BeforeAfter`, `TrustWidget`)
+  - Prop typing via TypeScript types
+- **UI/UX**
+  - Smooth progress bar transition (`transition-all duration-300`)
+  - Mobile-first layouts with responsive breakpoints
+- **Logic**
+  - Single source of truth: `selectedMonth` state in `TrayaJourney.tsx`
+  - Derived values via `useMemo` (`phase`) and computed percentage
+
+## Project Screenshots
+
+Add your screenshots here (replace file names/paths as needed):
+
+```md
+![Traya Journey - Web View](./src/assets/screenshots/webview.png)
+![Traya Journey - Mobile View](./src/assets/screenshots/mobileview.png)
+```
+
+
+
+
+## Responsiveness (Mobile-first)
+
+The UI is built with a **mobile-first approach** using Tailwind responsive utilities (`sm:`, `md:`), ensuring good fidelity on small screens first and scaling up cleanly for larger devices.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (LTS recommended)
+- npm (or pnpm/yarn if you prefer)
+
+### Install
+
+```bash
+npm install
+```
+
+### Run (Development)
+
+```bash
+npm run dev
+```
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+
+## Folder Structure (High Level)
+
+- **`src/components/traya-journey/`**
+  - `TrayaJourney.tsx` (main screen)
+  - `Timeline.tsx` (month tabs + progress bar)
+  - `PhaseDetails.tsx` (phase copy + month image)
+  - `BeforeAfter.tsx` (before/after toggle)
+  - `TrustWidget.tsx` (trust content)
+- **`src/data/journeyData.json`**
+  - Month → image mapping
+- **`src/assets/images/`**
+  - Month mock images
+
+## Notes
+
+- Styling is built with Tailwind (`@tailwindcss/vite`).
+- Images are resolved via Vite `import.meta.glob` so they must exist under `src/assets/images/`.
