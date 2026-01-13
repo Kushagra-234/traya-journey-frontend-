@@ -16,6 +16,16 @@ A small React UI that visualizes a **5‑month hair regrowth journey** with:
 - **Tailwind CSS** (styling)
 - **ESLint** (linting)
 
+## Project Screenshots
+
+### Web View
+
+![Traya Journey - Web View](./src/assets/screenshots/webview.png)
+
+### Mobile View
+
+![Traya Journey - Mobile View](./src/assets/screenshots/mobileview.png)
+
 ## Key Features
 
 - **Progress Timeline**
@@ -81,23 +91,18 @@ This project covers the requirements from the assignment brief:
   - Single source of truth: `selectedMonth` state in `TrayaJourney.tsx`
   - Derived values via `useMemo` (`phase`) and computed percentage
 
-## Project Screenshots
-
-Add your screenshots here (replace file names/paths as needed):
-
-![Traya Journey - Web View](./src/assets/screenshots/webview.png)
-![Traya Journey - Mobile View](./src/assets/screenshots/mobileview.png)
-
 ## Responsiveness (Mobile-first)
 
 The UI is built with a **mobile-first approach** using Tailwind responsive utilities (`sm:`, `md:`), ensuring good fidelity on small screens first and scaling up cleanly for larger devices.
 
 ## Getting Started
 
-### Prerequisites
+### Clone
 
-- Node.js (LTS recommended)
-- npm (or pnpm/yarn if you prefer)
+```bash
+git clone https://github.com/Kushagra-234/traya-journey-frontend-.git
+cd traya-journey-frontend-
+```
 
 ### Install
 
@@ -115,16 +120,4 @@ npm run dev
 
 ```bash
 npm run build
-```
-
-### Preview Production Build
-
-```bash
-npm run preview
-```
-
-### Lint
-
-```bash
-npm run lint
 ```

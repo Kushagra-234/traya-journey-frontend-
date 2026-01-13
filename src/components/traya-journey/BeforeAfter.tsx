@@ -66,7 +66,7 @@ function BeforeAfter({ monthImages }: BeforeAfterProps) {
         </div>
       </div>
       <div className="w-full">
-        <div className="w-full max-w-md mx-auto h-40 sm:h-52 md:h-60 bg-white border border-slate-200 rounded-xl overflow-hidden">
+        <div className="w-full max-w-md mx-auto aspect-4/3 bg-white border border-slate-200 rounded-xl overflow-hidden">
           {activeImageUrl ? (
             <img
               src={activeImageUrl}

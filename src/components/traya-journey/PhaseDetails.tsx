@@ -58,7 +58,7 @@ function PhaseDetails({
         </ul>
 
         <div className="w-full flex flex-col items-center md:items-end">
-          <div className="w-full max-w-xs h-32 sm:h-40 bg-white border border-slate-200 rounded-xl overflow-hidden">
+          <div className="w-full max-w-xs aspect-4/3 bg-white border border-slate-200 rounded-xl overflow-hidden">
             {monthImageUrl ? (
               <img
                 src={monthImageUrl}
