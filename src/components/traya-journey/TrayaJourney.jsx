@@ -53,7 +53,7 @@ function TrayaJourney() {
   const progressPercentage = (selectedMonth / MONTHS.length) * 100;
 
   return (
-    <div className="w-[80%] bg-white text-slate-800">
+    <div className="w-full bg-white text-slate-800">
       {/* Page title section */}
       <section className="w-full bg-white py-8 text-center">
         <h1 className="text-2xl md:text-3xl font-bold text-slate-900">

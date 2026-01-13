@@ -11,7 +11,7 @@ function PhaseDetails({ phase }) {
       </h3>
       <ul className="space-y-3">
         {phase.points.map((point) => (
-          <li key={point} className="flex items-start gap-3 text-slate-700">
+          <li key={point} className="flex items-start gap-6 text-slate-700">
             <span className="text-[#8fb339] text-lg">✓</span>
             <span className="text-sm">{point}</span>
           </li>

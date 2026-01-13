@@ -9,8 +9,10 @@ function App() {
       <Navbar />
 
       {/* Main content - centered */}
-      <main className="flex-1 w-full flex justify-center">
-        <TrayaJourney />
+      <main className="flex-1 w-full flex justify-center px-4 sm:px-6 py-6">
+        <div className="w-full max-w-4xl bg-white rounded-2xl overflow-hidden shadow-sm">
+          <TrayaJourney />
+        </div>
       </main>
     </div>
   );
